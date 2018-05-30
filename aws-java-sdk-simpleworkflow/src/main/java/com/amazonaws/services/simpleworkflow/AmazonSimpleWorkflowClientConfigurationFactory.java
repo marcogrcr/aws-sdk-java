@@ -12,31 +12,22 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package com.amazonaws.services.dynamodbv2;
+package com.amazonaws.services.simpleworkflow;
 
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.ClientConfigurationFactory;
 import com.amazonaws.PredefinedClientConfigurations;
 import com.amazonaws.annotation.SdkInternalApi;
-import com.amazonaws.retry.PredefinedRetryPolicies;
 
 /*
  * Factory producing predefined {@link ClientConfiguration} instances for
- * the AmazonDynamoDB client.
+ * the AmazonSimpleWorkflow client.
  */
 @SdkInternalApi
-class AmazonDynamoDBClientConfigurationFactory extends ClientConfigurationFactory {
+public class AmazonSimpleWorkflowClientConfigurationFactory extends ClientConfigurationFactory {
 
     @Override
     protected ClientConfiguration getDefaultConfig() {
-        return PredefinedClientConfigurations.dynamoDefault();
+        return PredefinedClientConfigurations.swfDefault();
     }
-
-    @Override
-    protected ClientConfiguration getInRegionOptimizedConfig() {
-        return super.getInRegionOptimizedConfig().withSocketTimeout(6000)
-                .withRetryPolicy(PredefinedRetryPolicies.DYNAMODB_DEFAULT);
-    }
-
-
 }
